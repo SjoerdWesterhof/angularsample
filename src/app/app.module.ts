@@ -1,16 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router'
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
+import { EventsListComponent } from './events-list.component';
+import { CreateEventComponent } from './create-event.component';
+import { EventService } from './event.service';
+import { appRoutes } from './routes'
 
 @NgModule({
+  imports: [ 
+    BrowserModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   declarations: [
-    AppComponent
+    AppComponent,
+    EventsListComponent,
+    CreateEventComponent
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ EventService ],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+
+}
+
