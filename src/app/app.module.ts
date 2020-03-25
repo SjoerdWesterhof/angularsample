@@ -10,6 +10,7 @@ import { EventService } from './event.service';
 import { appRoutes } from './routes'
 import { NavigationComponent } from './navigation/navigation.component';
 import { SettingsComponent } from './settings/settings.component';
+import { TodoListComponent } from './todos/list/todo-list.component';
 
 @NgModule({
   imports: [ 
@@ -22,7 +23,8 @@ import { SettingsComponent } from './settings/settings.component';
     EventsListComponent,
     CreateEventComponent,
     NavigationComponent,
-    SettingsComponent
+    SettingsComponent,
+    TodoListComponent
   ],
   providers: [ EventService ],
   bootstrap: [ AppComponent ]
