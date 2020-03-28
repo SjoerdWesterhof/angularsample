@@ -1,6 +1,8 @@
 <div class="well">
   Todo's
   <ul>
-    <li *ngFor="let todo of todos">{{todo.title}}</li>
+    <li *ngFor="let todo of todos">
+      <my-todo-details [item]="todo"></my-todo-details>
+    </li>
   </ul>
 </div>
