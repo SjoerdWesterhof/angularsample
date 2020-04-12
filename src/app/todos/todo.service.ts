@@ -1,44 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+
 
 @Injectable()
 export class TodoService {
-    getTodoItems(): any{
-        return [
-        {
-          "userId": 1,
-          "id": 1,
-          "title": "delectus aut autem",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 2,
-          "title": "quis ut nam facilis et officia qui",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 3,
-          "title": "fugiat veniam minus",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 4,
-          "title": "et porro tempora",
-          "completed": true
-        },
-        {
-          "userId": 1,
-          "id": 5,
-          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 6,
-          "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-          "completed": false
-        },];
+    constructor(private http: HttpClient){
+
     }
+
+    getTodoItems(): Observable<Object>{
+      return this.http.get("https://jsonplaceholder.typicode.com/todos").pipe(map((response: Response) => {
+        
+      return response;
+    })).pipe(catchError(this.handleError()));
+  }
+
+    private handleError<T>(operation = 'operation', result?: T){
+      return (error: any) : Observable<T> => {
+        console.error(error);
+        return of(result as T);
+      }
+
+    }
+       
 }
